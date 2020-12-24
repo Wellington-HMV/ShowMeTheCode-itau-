@@ -1,0 +1,66 @@
+<h1>Nova Solicitação</h1>
+<span>insira aqui dados cadastrais para nova solicitação.</span>
+<form [formGroup]="solicitacaoForm" class="mt-2" (submit)="salvarSolicitcao()">
+  <div class="row">
+    <mat-form-field class="col-4">
+      <mat-label>Empresa</mat-label>
+      <input type="text" matInput formControlName="empresa" placeholder="Itau S.A">
+      <mat-error *ngIf="solicitacaoForm.controls.empresa.hasError('required')">
+        Preencher a Empresa é <strong>Obrigatório</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="col-3">
+      <mat-label>CNPJ</mat-label>
+      <input type="text" matInput formControlName="cnpj" placeholder="Itau S.A" mask="00.000.000/0000-00">
+      <mat-error *ngIf="solicitacaoForm.controls.cnpj.hasError('required')">
+        Preencher o Cnpj é <strong>Obrigatório</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="col-3">
+      <mat-label>Plano</mat-label>
+      <input type="text" matInput formControlName="plano" placeholder="P120">
+      <mat-error *ngIf="solicitacaoForm.controls.plano.hasError('required')">
+        Preencher o Plano é <strong>Obrigatório</strong>
+      </mat-error>
+    </mat-form-field>
+  </div>
+<div class="row">
+<div class="col-10">
+  <div class="row">
+    <mat-form-field class="col-3">
+      <mat-label>Tarifa</mat-label>
+      <input type="text" matInput formControlName="tarifa" placeholder="800.00" mask="000.000.00" prefix="R$ ">
+      <mat-error *ngIf="solicitacaoForm.controls.tarifa.hasError('required')">
+        Preencher a Tarifa é <strong>Obrigatório</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="col-3">
+      <mat-label>Minutos</mat-label>
+      <input type="text" matInput formControlName="minutos" placeholder="300" mask="000.000.00" suffix=" Minutos">
+      <mat-error *ngIf="solicitacaoForm.controls.minutos.hasError('required')">
+        Preencher o Campo é <strong>Obrigatório</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="col-3">
+      <mat-label>Valor Do Plano</mat-label>
+      <input type="text" matInput formControlName="valorDoPlano" placeholder="987.26" mask="000.000.00" prefix="R$ ">
+      <mat-error *ngIf="solicitacaoForm.controls.valorDoPlano.hasError('required')">
+        Preencher o Campo é <strong>Obrigatório</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="col-3">
+      <mat-label>Data Adesao</mat-label>
+      <input type="text" matInput formControlName="dataAdesao" placeholder="Itau S.A" mask="00/00/0000">
+      <mat-error *ngIf="solicitacaoForm.controls.dataAdesao.hasError('required')">
+        Preencher a Data de Adesão é <strong>Obrigatório</strong>
+      </mat-error>
+    </mat-form-field>
+  </div>
+</div>
+  <div class="col-2">
+    <button matRipple mat-icon-button type="submit" class="btn btn-submit">
+      {{edit? 'Salvar Alteração' : 'Adicionar Solicitação'}}
+    </button>
+  </div>
+</div>
+</form>

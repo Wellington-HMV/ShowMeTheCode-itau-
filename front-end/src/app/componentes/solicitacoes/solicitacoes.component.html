@@ -1,0 +1,49 @@
+<app-nova-solicitacao [events]="eventsSubject.asObservable()"></app-nova-solicitacao>
+
+<div class="table-responsive mt-5">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Empresa</th>
+        <th scope="col">Plano</th>
+        <th scope="col">Tarifa</th>
+        <th scope="col">Minutos</th>
+        <th scope="col">Valor Plano</th>
+        <th scope="col">Data de Adesão</th>
+        <th scope="col">Data de Envio</th>
+        <th scope="col">Ação</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let solicitacao of solicitacoes$ | async;">
+      <tr>
+        <th #id scope="row">{{solicitacao._id}}</th>
+        <td>
+          <div>{{solicitacao.empresa}}</div>
+          <div>{{solicitacao.cnpj}}</div>
+        </td>
+        <td>{{solicitacao.plano}}</td>
+        <td>{{solicitacao.tarifa}}</td>
+        <td>{{solicitacao.minutos}}</td>
+        <td>{{solicitacao.valorDoPlano}}</td>
+        <td>{{solicitacao.dataAdesao}}</td>
+        <td>{{solicitacao.dataEnvio}}</td>
+        <td>
+          <button mat-icon-button class="btn btn-perso" [matMenuTriggerFor]="menu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="editar(id)">
+              <mat-icon>create</mat-icon>
+              <span>Editar</span>
+            </button>
+            <button mat-menu-item (click)="deletar(id)">
+              <mat-icon>delete</mat-icon>
+              <span>Deletar</span>
+            </button>
+          </mat-menu>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
