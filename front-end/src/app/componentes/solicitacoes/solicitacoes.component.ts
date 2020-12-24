@@ -34,8 +34,7 @@ export class SolicitacoesComponent implements OnInit {
   deletar(id: Element){
     this.solicService.deleteSolicitacao(id.innerHTML).subscribe(r=>{
       alert(r.message);
-      window.location.reload(); 
-      //está com problema no reload retorna erro 500 (header de request verificado porém não encontrei o erro por prazo enviei sem solucionar o caso)
+      window.location.reload();
     }, e=>{alert(e.error)});
   }
 }
