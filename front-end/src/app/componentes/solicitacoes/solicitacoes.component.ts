@@ -21,10 +21,11 @@ export class SolicitacoesComponent implements OnInit {
   constructor(
     private solicService: SolicitacoesService
   ) {
+  }
+  
+  ngOnInit(): void { 
     this.solicitacoes$ = this.solicService.getSolicitacoes();
   }
-
-  ngOnInit(): void { }
 
   editar(id: Element) {
     this.eventsSubject.next(id.innerHTML);
